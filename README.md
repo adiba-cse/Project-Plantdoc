@@ -1,4 +1,4 @@
-# MERN Template with Material Bootstrap added
+# Project Plantdoc
 
 ### Running on your System
 1. Clone/Download the template

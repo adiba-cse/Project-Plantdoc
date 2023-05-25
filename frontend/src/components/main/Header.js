@@ -23,8 +23,8 @@ const Header = () => {
           {/* Navbar brand */}
           <a className="navbar-brand mt-2 mt-lg-0" href="#">
             <img
-              src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-              height={15}
+              src="https://cdni.autocarindia.com/utils/imageresizer.ashx?n=http://img.haymarketsac.in/autocarpro/dfeb0f3b-abc4-40fb-a3a9-8e1371d6e39e.jpg&w=750&h=490&q=75&c=1"
+              height={45}
               alt="MDB Logo"
               loading="lazy"
             />
@@ -32,12 +32,12 @@ const Header = () => {
           {/* Left links */}
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <NavLink className="nav-link" to="/main/home">
+              <NavLink className="nav-link" to="/main/Home">
                 Home
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/main/aboutus">
+              <NavLink className="nav-link" to="/main/About">
                 AboutUs
               </NavLink>
             </li>
@@ -54,7 +54,7 @@ const Header = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="btn btn-outline-white" to="/main/login">
+              <NavLink className="btn btn-outline-white" to="/main/signin">
                 Signin
               </NavLink>
             </li>
