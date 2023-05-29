@@ -12,8 +12,8 @@ const Home = () => {
   <div class="container">
    <h1>
     Gardening has been a hobby of many and plants are there in the agricultural sector as well.
-    Plant Diseases not only affect the garden plants but also the agricultural plants.This application helps in timely detection of plant diseases to sa
-    PlantDoc-
+    Plant Diseases not only affect the garden plants but also the agricultural plants.This application helps in timely detection of plant diseases to help garderns in preserving garden plants and farmers to help them save their agricultural produce and thus increasing overall profits and productivity!!...
+    <ul>PlantDoc-</ul>
     <li>Enables to upload plant leaf images as input and provides plant disease in as output with cure to the same.</li>
    <li>One can maintain the history of detection of plant diseases via this web application.</li> 
    <li>It allows seperate account creation for different users</li>
