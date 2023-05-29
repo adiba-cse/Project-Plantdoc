@@ -168,7 +168,7 @@ const Signup = () => {
                   </div>
                   <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
                     <img
-                      src="/images/lady_plant.gif"
+                      src="https://images.unsplash.com/photo-1622310505762-a813a1c2e0bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z3JlZW4lMjBjb2xvdXJ8ZW58MHx8MHx8fDA%3D&w=1000&q=80"
                       className="img-fluid"
                       alt="Sample image"
                     />

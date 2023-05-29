@@ -42,7 +42,7 @@ const Signin = () => {
               <div className="card-body p-md-5 mx-md-4">
                 <div className="text-center">
                   <img
-                    src="/images/flg_logo5147-removebg-preview.png"
+                    src="https://www.familyhandyman.com/wp-content/uploads/2020/05/Black-Spot-Diplocarpon-rosae-GettyImages-1097545284.jpg?fit=696,696"
                     style={{ width: 250 }}
                     alt="logo"
                     shape
