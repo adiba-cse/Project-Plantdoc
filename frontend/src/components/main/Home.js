@@ -15,8 +15,9 @@ const Home = () => {
     Plant Diseases not only affect the garden plants but also the agricultural plants.This application helps in timely detection of plant diseases to sa
     PlantDoc-
     <li>Enables to upload plant leaf images as input and provides plant disease in as output with cure to the same.</li>
-    One can maintain the history of detection of plant diseases via this web application.
-    It allows seperate account creation for different users
+   <li>One can maintain the history of detection of plant diseases via this web application.</li> 
+   <li>It allows seperate account creation for different users</li>
+    
    </h1>
 
 
