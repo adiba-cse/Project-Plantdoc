@@ -10,4 +10,4 @@ const AdminProfile = () => {
   )
 }
 
-export default AdminProfile
+export default AdminProfile;

@@ -1,25 +1,54 @@
 const express = require('express');
-const dotenv = require('dotenv');
-dotenv.config();
-
-const userRouter = require('./routers/userRouter');
-const cors = require('cors');
-const { PORT } = require('./config');
-
 const app = express();
+//importing router
+const userRouter = require('./routers/userrouter');
+const imageRouter = require('./routers/imagerouter');
+const predictionRouter = require('./routers/predictionrouter');
+const utilRouter = require('./routers/util');
+const cors = require('cors');
+app.use(cors({
+    origin: ['http://localhost:3000', 'http://localhost:3001']
+}))
+// parse json data
 app.use(express.json());
-// app.use(express.urlencoded({extended : true}));
-app.use('/user', userRouter);
-app.use(cors(
-    {
-        origin : 'http://localhost:3000',
-        credentials : true
-    }
-));
+// adding routers
+app.use('/user',userRouter);
+app.use('/image',imageRouter);
+app.use('/prediction',predictionRouter);
+app.use('/util',utilRouter);
+
+app.use(express.static('./static/uploads'));
+
+const port = 5000;
+
+app.post("/create-payment-intent", async (req, res) => {
+    const { amount } = req.body;
+  
+    // Create a PaymentIntent with the order amount and currency
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: amount * 100,
+      currency: "inr",
+      automatic_payment_methods: {
+        enabled: true,
+      },
+    });
+  
+    res.send({
+      clientSecret: paymentIntent.client_secret,
+    });
+  });
 
 app.get('/', (req, res) => {
-    console.log('Request at index');
-    res.status(299).send('Working Perfectly!!');
+    res.send('Working Perfectly')
+});
+
+app.get('/add',(req, res) => {
+    res.send('Response from Add');
 })
 
-app.listen(PORT, () => console.log(`Express server has started at ${PORT}`));
+// getall
+app.get('/getall',(req,res) => {
+    res.send('Hello')
+})
+
+app.listen(port, () => { console.log('server started!!'); } );

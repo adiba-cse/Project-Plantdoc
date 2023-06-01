@@ -60,8 +60,8 @@ const Signup = () => {
   });
 
   return (
-    <section className="vh-100" style={{ backgroundColor: "#eee" }}>
-      <div className="container h-100">
+    <section className="full-page" style={{minHeight: '100vh', backgroundImage: `url('https://img.freepik.com/free-photo/top-view-ferns-leaves-with-copy-space_23-2148678607.jpg?w=2000')` }}>
+      <div className="container h-100 py-5">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-lg-12 col-xl-11">
             <div className="card text-black" style={{ borderRadius: 25 }}>
@@ -151,7 +151,7 @@ const Signup = () => {
                           htmlFor="form2Example3"
                         >
                           I agree all statements in{" "}
-                          <a href="#!">Terms of service</a>
+                          <a href="main/termscondition">Terms of service</a>
                         </label>
                       </div>
                       <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
@@ -166,12 +166,8 @@ const Signup = () => {
                       </div>
                     </form>
                   </div>
-                  <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                    <img
-                      src="https://images.unsplash.com/photo-1622310505762-a813a1c2e0bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Z3JlZW4lMjBjb2xvdXJ8ZW58MHx8MHx8fDA%3D&w=1000&q=80"
-                      className="img-fluid"
-                      alt="Sample image"
-                    />
+                  <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2" style={{backgroundImage: `url('https://img.freepik.com/free-vector/flat-houseplant-collection_23-2148927487.jpg')`, backgroundSize: 'cover'}}>
+                    
                   </div>
                 </div>
               </div>
