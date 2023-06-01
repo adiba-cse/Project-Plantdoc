@@ -13,6 +13,8 @@ const PredictPlantDisease = () => {
 
     const [predictionLoading, setPredictionLoading] = useState(false);
 
+    const [loadedImage, setLoadedImage] = useState(null);
+
     const [result, setResult] = useState(null);
 
     let webcam, labelContainer;
@@ -56,23 +58,23 @@ const PredictPlantDisease = () => {
         // }
     }
 
-    async function predict() {
-        // predict can take in an image, video or canvas html element
-        let img = new Image();
-        img.src = 'leaf2.jpg';
-        console.log(img);
-        // console.log(webcam.canvas);
-        // console.log(webcam.canvas.value);
-        // const prediction = await model.predict(webcam.canvas);
-        const prediction = await model.predict(img);
-        for (let i = 0; i < maxPredictions; i++) {
-            const classPrediction =
-                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-            labelContainer.childNodes[i].innerHTML = classPrediction;
-        }
-    }
+    // async function predict() {
+    //     // predict can take in an image, video or canvas html element
+    //     let img = new Image();
+    //     img.src = 'leaf2.jpg';
+    //     console.log(img);
+    //     // console.log(webcam.canvas);
+    //     // console.log(webcam.canvas.value);
+    //     // const prediction = await model.predict(webcam.canvas);
+    //     const prediction = await model.predict(img);
+    //     for (let i = 0; i < maxPredictions; i++) {
+    //         const classPrediction =
+    //             prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+    //         labelContainer.childNodes[i].innerHTML = classPrediction;
+    //     }
+    // }
     
-    const predictFromImage =  async (img) => {
+    const predictFromImage =  async () => {
         // predict can take in an image, video or canvas html element
         // let img = new Image();
         // img.src = '/leaf2.jpg';
@@ -81,7 +83,7 @@ const PredictPlantDisease = () => {
         // console.log(webcam.canvas.value);
         // const prediction = await model.predict(webcam.canvas);
         // console.log(model);
-        const prediction = await model.predict(img);
+        const prediction = await model.predict(loadedImage);
         console.log(prediction);
         console.log(predictionResultExtractor(prediction));
         setResult(predictionResultExtractor(prediction));
@@ -89,7 +91,7 @@ const PredictPlantDisease = () => {
             title: 'Success',
             icon : 'success',
             text : 'Prediction Completed'
-        })
+        });
         // for (let i = 0; i < maxPredictions; i++) {
         //     const classPrediction =
         //         prediction[i].className + ": " + prediction[i].probability.toFixed(2);
@@ -98,11 +100,11 @@ const PredictPlantDisease = () => {
         //     }
     }
 
-    async function loop() {
-        webcam.update(); // update the webcam frame
-        await predict();
-        window.requestAnimationFrame(loop);
-    }
+    // async function loop() {
+    //     webcam.update(); // update the webcam frame
+    //     await predict();
+    //     window.requestAnimationFrame(loop);
+    // }
 
     useEffect(() => {
       init();
@@ -116,13 +118,14 @@ const PredictPlantDisease = () => {
     if (file) {
       // Create a FileReader to read the file
       const reader = new FileReader();
-
+      console.log();
       // Set up the FileReader onload event
       reader.onload = function(loadedEvent) {
         // Set the image source to the uploaded image data
+        console.log('loaded');
         img.src = loadedEvent.target.result;
         setSelImage(loadedEvent.target.result);
-        predictFromImage(img);
+        setLoadedImage(img);
       };
 
       // Read the file as a data URL
@@ -169,6 +172,12 @@ const PredictPlantDisease = () => {
                             <button className='btn btn-success mt-3 w-100'> Find Cure for Your Disease <i class="fa fa-arrow-right" aria-hidden="true"></i></button>
                             </>
                         )
+                    )
+                  }
+
+                  {
+                    loadedImage && (
+                      <button className='btn btn-primary' onClick={predictFromImage}>Predict Disease</button>
                     )
                   }
                 </div>
