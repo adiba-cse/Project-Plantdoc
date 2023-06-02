@@ -4,6 +4,8 @@ import Admin from "./components/admin";
 import Main from "./components/main";
 import Signin from "./components/main/Signin";
 import Signup from "./components/main/Signup";
+import Contact from "./components/main/Contact";
+import About from "./components/main/About";
 import Home from "./components/main/Home";
 import UserAuth from "./auth/UserAuth";
 import User from "./components/user";
@@ -17,6 +19,7 @@ import { useState } from "react";
 import PredictPlantDisease from "./components/user/PredictPlantDisease";
 import Contact from "./components/main/Contact";
 import About from "./components/main/About";
+
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -43,7 +46,8 @@ function App() {
             >
               <Route element={<AdminProfile />} path="profile" />
             </Route>
-
+            <Route element={<About />} path="about"/>
+              <Route element={<Contact />} path="contact" />
             <Route element={<Main />} path="main">
               <Route element={<Home />} path="home" />
               <Route element={<Signin />} path="signin" />

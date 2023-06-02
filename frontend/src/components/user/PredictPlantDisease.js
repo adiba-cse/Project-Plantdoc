@@ -134,37 +134,129 @@ const PredictPlantDisease = () => {
 }
 
   return (
-    <div style={{minHeight: '100vh', backgroundImage: "url('https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/v986-bg-02-kqhe3wit.jpg?w=1200&h=1200&dpr=1&fit=clip&crop=default&fm=jpg&q=75&vib=3&con=3&usm=15&cs=srgb&bg=F4F4F3&ixlib=js-2.2.1&s=a18675d7f6be224df8ff585d65d5d8dc')"}}>
-        <header className='bg-dark'>
-        <div className="container py-5 "  >
+    <div style={{minHeight: '100vh', backgroundImage: "url('https://wallpapercave.com/wp/wp2139158.jpg')"}}>
+        <header className='bg-plant'>
+        {/* <div className="container py-5 "  >
             <p className="display-4 text-center fw-bold text-white">Plant Doc</p>
           <h1 class="text-center text-white ">What's Wrong With My Plant?</h1>
 
-        </div>
+        </div> */
+        <center>
+  <div style={{ backgroundColor: "whitesmoke", height: "auto" }}>
+    <b>
+      <h1 style={{ backgroundColor: "#f1f7f1f8", height: "max-content" }}>
+        🌱PlantDoc
+      </h1>
+      <b>
+        {" "}
+        <h2 style={{ backgroundColor: "#f1f7f1f8", height: "max-content" }}>
+          PLANT DISEASE DETECTION
+        </h2>
+      </b>
+    </b>
+  </div>
+  <b>
+    <br />
+  </b>
+</center>
+
+
+
+
+
+        
+        
+        
+        }
+
+
+
+
+
+
+
+
+
+
+
       </header>
 
       <section>
         <div className="container">
           <div className="row">
             <div className="col-md-10 mx-auto">
+              <center>
               <div className="card" 
+  //             style={{
+  //   backgroundColor: "white",
+  //   height: 600,
+  //   width: 550,
+  //   borderRadius: "1.0cm",
+   
+
+  // }}
             //   style={{height: '70vh', backgroundSize: 'cover', backgroundImage: `url('https://images.unsplash.com/photo-1538438253612-287c9fc9217e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGxhbnQlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&w=1000&q=80')`}}
               >
                 <div className="card-body">
                   {/* <img src="" /> */}
-                  <h4 className='text-center'>Upload Leaf Image</h4>
-                  <label className='d-block btn btn-primary px-5 py-3' htmlFor="leaf-image">
-                    <i class="fas fa-upload fa-2x"></i>&nbsp;&nbsp;
-                    Upload Leaf Image</label>
+
+
+                  
+                  {/* <h4 className='text-center'>Upload Leaf Image</h4> */}
+                  <br />
+                 
+                 
+                  <h3 style={{ color: "black" }}>
+    <i>Plant suffering from a plant disease?? Check it out now!!.. </i>
+  </h3>
+  <br />
+                  
+                  
+                  
+                  
+                  <label className='d-block btn btn-primary px-5 py-3' htmlFor="leaf-image" style= {{ backgroundColor: "rgb(78, 78, 138)" }}>
+                    {/* <i class="fas fa-upload fa-2x"></i>&nbsp;&nbsp; */}
+                    
+                    <center>
+    <h3 style={{ color: "white" }}>⤒ Upload image</h3>
+  </center>
+
+
+
+
+
+
+  
+</label>
+
+
+
+
                   <input hidden type='file' onChange={handleImageUpload} id="leaf-image" />
 
                   {
-                    selImage ? <img style={{height: '400px'}} className='d-block m-auto mt-4' src={selImage} alt="" /> : <p className='text-center h1 mt-5 bg-white py-4'>Select a leaf image to predict disease</p>
-                  }
+                    selImage ? <img style={{height: '400px'}} className='d-block m-auto mt-4' src={selImage} alt="" /> : 
+                    
+                    <i>
+                       <br />
+                       <h3 style={{ color: "green" }}>
+    Upload your plant leaf image by clicking the upload icon above!!..
+  </h3>
+</i>
+  
+
+                    }
+
+
 
                   {
                     result && (
+
+                      
                         result.className.endsWith('healthy') ? 
+
+
+                        
                         <p className='display-4 fw-bold text-success text-center'>Congratulations!! Your plant is Healthy</p> :
                         (
                             <>
@@ -182,6 +274,7 @@ const PredictPlantDisease = () => {
                   }
                 </div>
               </div>
+              </center>
             </div>
           </div>
         </div>
