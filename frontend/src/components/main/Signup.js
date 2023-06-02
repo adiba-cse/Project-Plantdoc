@@ -60,7 +60,7 @@ const Signup = () => {
   });
 
   return (
-    <section className="full-page" style={{minHeight: '100vh', backgroundImage: `url('https://img.freepik.com/free-photo/top-view-ferns-leaves-with-copy-space_23-2148678607.jpg?w=2000')` }}>
+    <section className="full-page" style={{minHeight: '100vh', backgroundImage: `url('https://th.bing.com/th/id/R.bce8a2d6062252144cf6ee98f65680a5?rik=SMCp7%2fS76m2f5g&riu=http%3a%2f%2fwallup.net%2fwp-content%2fuploads%2f2016%2f02%2f18%2f258259-nature-trees-forest-leaves-lianas-mist-moss-path-plants-ferns-rainforest-jungles.jpg&ehk=j4CNY3obG1NBJmFoLNg%2fNixMyU1W2JSsQLF%2b7iUNdMw%3d&risl=&pid=ImgRaw&r=0')` }}>
       <div className="container h-100 py-5">
         <div className="row d-flex justify-content-center align-items-center h-100">
           <div className="col-lg-12 col-xl-11">
@@ -69,7 +69,7 @@ const Signup = () => {
                 <div className="row justify-content-center">
                   <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                     <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
-                      Sign up
+                     <h3 style={{fontFamily:"cursive"}}> Sign up</h3> 
                     </p>
                     <form
                       className="mx-1 mx-md-4"
@@ -166,7 +166,7 @@ const Signup = () => {
                       </div>
                     </form>
                   </div>
-                  <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2" style={{backgroundImage: `url('https://img.freepik.com/free-vector/flat-houseplant-collection_23-2148927487.jpg')`, backgroundSize: 'cover'}}>
+                  <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2" style={{backgroundImage: `url('https://www.thetutuguru.com.au/wp-content/uploads/2020/06/Elberta-Peach-Tree-2-2048x1348.jpg')`, backgroundSize: 'cover' }}>
                     
                   </div>
                 </div>
