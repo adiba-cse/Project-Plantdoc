@@ -15,6 +15,8 @@ import UserProvider from "./context/UserProvider";
 import AdminProvider from "./context/AdminProvider";
 import { useState } from "react";
 import PredictPlantDisease from "./components/user/PredictPlantDisease";
+import Contact from "./components/main/Contact";
+import About from "./components/main/About";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(
@@ -46,6 +48,8 @@ function App() {
               <Route element={<Home />} path="home" />
               <Route element={<Signin />} path="signin" />
               <Route element={<Signup />} path="signup" />
+              <Route element={<Contact />} path="contact" />
+              <Route element={<About />} path="aboutus" />
             </Route>
 
             <Route
