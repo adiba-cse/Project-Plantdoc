@@ -24,8 +24,8 @@ const PredictPlantDisease = () => {
 
   const predictionResultExtractor = (prediction) => {
     let tempRes = prediction.find((pred) => pred.probability === Math.max(...prediction.map((pred) => pred.probability)));
-    if(tempRes.probability < 0.5){
-      return {className : 'Sorry! Unknown Plant', probability : 0}
+    if (tempRes.probability < 0.5) {
+      return { className: 'Sorry! Unknown Plant', probability: 0 }
     }
     return tempRes;
     let result = [];
@@ -154,14 +154,14 @@ const PredictPlantDisease = () => {
               <center>
                 <div
                   className="card"
-                  //             style={{
-                  //   backgroundColor: "white",
-                  //   height: 600,
-                  //   width: 550,
-                  //   borderRadius: "1.0cm",
+                //             style={{
+                //   backgroundColor: "white",
+                //   height: 600,
+                //   width: 550,
+                //   borderRadius: "1.0cm",
 
-                  // }}
-                  //   style={{height: '70vh', backgroundSize: 'cover', backgroundImage: `url('https://images.unsplash.com/photo-1538438253612-287c9fc9217e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGxhbnQlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&w=1000&q=80')`}}
+                // }}
+                //   style={{height: '70vh', backgroundSize: 'cover', backgroundImage: `url('https://images.unsplash.com/photo-1538438253612-287c9fc9217e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGxhbnQlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&w=1000&q=80')`}}
                 >
                   <div className="card-body">
                     {/* <img src="" /> */}
@@ -183,14 +183,14 @@ const PredictPlantDisease = () => {
                     </label>
 
                     <input hidden type="file" onChange={handleImageUpload} id="leaf-image" />
-
+                    <i>
+                      <br />
+                      <h3 style={{ color: 'green' }}>Upload your plant leaf image by clicking the upload icon above!!..</h3>
+                    </i>  
                     {selImage ? (
                       <img style={{ height: '400px' }} className="d-block m-auto mt-4" src={selImage} alt="" />
                     ) : (
-                      <i>
-                        <br />
-                        <h3 style={{ color: 'green' }}>Upload your plant leaf image by clicking the upload icon above!!..</h3>
-                      </i>
+                      ''
                     )}
 
                     {result &&
@@ -207,7 +207,7 @@ const PredictPlantDisease = () => {
                       ))}
 
                     {loadedImage && (
-                      <button className="btn btn-primary" onClick={predictFromImage}>
+                      <button className="btn btn-primary mt-5" onClick={predictFromImage}>
                         Predict Disease
                       </button>
                     )}
