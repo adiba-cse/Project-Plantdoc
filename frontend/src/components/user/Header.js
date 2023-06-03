@@ -13,9 +13,9 @@ const Header = () => {
   return (
     <>
       {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-primary" >
         {/* Container wrapper */}
-        <div className="container">
+        <div className="container" style={{backgroundColor:"black"}} >
           {/* Toggle button */}
           <button
             className="navbar-toggler"
@@ -33,8 +33,8 @@ const Header = () => {
             {/* Navbar brand */}
             <a className="navbar-brand mt-2 mt-lg-0" href="#">
             <img
-              src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
-              height={15}
+              src="https://cdni.autocarindia.com/utils/imageresizer.ashx?n=http://img.haymarketsac.in/autocarpro/dfeb0f3b-abc4-40fb-a3a9-8e1371d6e39e.jpg&w=750&h=490&q=75&c=1"
+              height={45}
               alt="MDB Logo"
               loading="lazy"
             />
@@ -87,10 +87,10 @@ const Header = () => {
                 aria-expanded="false"
               >
                 <img
-                  src="https://mdbcdn.b-cdn.net/img/new/avatars/2.webp"
+                  src="https://th.bing.com/th/id/OIP.JOTwRZHJceewS0s-polP4gHaFo?w=276&h=210&c=7&r=0&o=5&pid=1.7"
                   class="rounded-circle"
-                  height="25"
-                  alt="Black and White Portrait of a Man"
+                  height="45"
+                  alt="Avatar"
                   loading="lazy"
                 />
               </a>
