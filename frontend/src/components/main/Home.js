@@ -30,16 +30,19 @@ borderWidth:'2px'
   
 
  
-<i>
+<td></td>
  <h4 style={{fontFamily:"mono"}}>
+  <i>
 
     Gardening has been a hobby of many and plants are there in the agricultural
     sector as well. Plant Diseases not only affect the garden plants but also
     the agricultural plants.This application helps in timely detection of plant
     diseases to help garderns in preserving garden plants and farmers to help
     them save their agricultural produce and thus increasing overall profits and
-    productivity!!...
-    <b><ul>PlantDoc-</ul></b>
+    productivity!!... </i>
+    </h4>
+    <h4 style={{fontFamily:"mono"}}>
+    <i> <b><ul>PlantDoc-</ul></b>
     <li>
       Enables to upload plant leaf images as input and provides plant disease in
       as output with cure to the same.
@@ -50,8 +53,11 @@ borderWidth:'2px'
     </li>
     <li>
       It allows seperate account creation for different users.</li>
-      </h4>
-  </i>
+      </i>
+    </h4>
+   
+     
+ 
  
 </div>
 </center>
