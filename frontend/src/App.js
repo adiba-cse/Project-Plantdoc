@@ -17,8 +17,6 @@ import UserProvider from "./context/UserProvider";
 import AdminProvider from "./context/AdminProvider";
 import { useState } from "react";
 import PredictPlantDisease from "./components/user/PredictPlantDisease";
-import Contact from "./components/main/Contact";
-import About from "./components/main/About";
 
 
 function App() {
