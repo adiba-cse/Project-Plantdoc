@@ -13,9 +13,9 @@ const Header = () => {
   return (
     <>
       {/* Navbar */}
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary" >
+      <nav className="navbar navbar-expand-lg navbar-dark" style={{backgroundColor:"black"}} >
         {/* Container wrapper */}
-        <div className="container" style={{backgroundColor:"black"}} >
+        <div className="container" >
           {/* Toggle button */}
           <button
             className="navbar-toggler"
