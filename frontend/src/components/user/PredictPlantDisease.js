@@ -8,6 +8,8 @@ const PredictPlantDisease = () => {
   const [model, setModel] = useState(null);
   const [maxPredictions, setMaxPredictions] = useState(null);
 
+  const [selImg, setSelImg] = useState('');
+
   const [selImage, setSelImage] = useState('');
 
   const [predictionLoading, setPredictionLoading] = useState(false);
@@ -15,6 +17,8 @@ const PredictPlantDisease = () => {
   const [loadedImage, setLoadedImage] = useState(null);
 
   const [result, setResult] = useState(null);
+
+  const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('user')));
 
   let webcam, labelContainer;
 
@@ -28,6 +32,36 @@ const PredictPlantDisease = () => {
     return result;
   };
 
+  const uploadFile = (file) => {
+    const fd = new FormData();
+    fd.append('myfile', file);
+    fetch(apiUrl + '/util/uploadfile', {
+      method: 'POST',
+      body: fd
+    }).then((res) => {
+      if (res.status === 200) {
+        console.log('file uploaded');
+      }
+    });
+  };
+
+  const saveHistory = async (res) => {
+    const response = await fetch(`${apiUrl}/prediction/add`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        image: selImg,
+        user: currentUser._id,
+        result: res,
+        createdAt: new Date()
+      })
+    });
+    const data = await response.json();
+    console.log(data);
+  };
+
   async function init() {
     const modelURL = modelPath + '/model.json';
     const metadataURL = modelPath + '/metadata.json';
@@ -39,69 +73,20 @@ const PredictPlantDisease = () => {
     let modelT = await window.tmImage.load(modelURL, metadataURL);
     setMaxPredictions(modelT.getTotalClasses());
     setModel(modelT);
-
-    // Convenience function to setup a webcam
-    // const flip = true; // whether to flip the webcam
-    // webcam = new window.tmImage.Webcam(200, 200, flip); // width, height, flip
-    // await webcam.setup(); // request access to the webcam
-    // await webcam.play();
-    // window.requestAnimationFrame(loop);
-
-    // append elements to the DOM
-    // document.getElementById("webcam-container").appendChild(webcam.canvas);
-    // labelContainer = document.getElementById("label-container");
-    // for (let i = 0; i < maxPredictions; i++) { // and class labels
-    //     labelContainer.appendChild(document.createElement("div"));
-    // }
   }
 
-  // async function predict() {
-  //     // predict can take in an image, video or canvas html element
-  //     let img = new Image();
-  //     img.src = 'leaf2.jpg';
-  //     console.log(img);
-  //     // console.log(webcam.canvas);
-  //     // console.log(webcam.canvas.value);
-  //     // const prediction = await model.predict(webcam.canvas);
-  //     const prediction = await model.predict(img);
-  //     for (let i = 0; i < maxPredictions; i++) {
-  //         const classPrediction =
-  //             prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-  //         labelContainer.childNodes[i].innerHTML = classPrediction;
-  //     }
-  // }
-
   const predictFromImage = async () => {
-    // predict can take in an image, video or canvas html element
-    // let img = new Image();
-    // img.src = '/leaf2.jpg';
-    // console.log(img);
-    // console.log(webcam.canvas);
-    // console.log(webcam.canvas.value);
-    // const prediction = await model.predict(webcam.canvas);
-    // console.log(model);
     const prediction = await model.predict(loadedImage);
     console.log(prediction);
     console.log(predictionResultExtractor(prediction));
     setResult(predictionResultExtractor(prediction));
+    saveHistory(predictionResultExtractor(prediction));
     Swal.fire({
       title: 'Success',
       icon: 'success',
       text: 'Prediction Completed'
     });
-    // for (let i = 0; i < maxPredictions; i++) {
-    //     const classPrediction =
-    //         prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-    //         // labelContainer.childNodes[i].innerHTML = classPrediction;
-    //         console.log(classPrediction);
-    //     }
   };
-
-  // async function loop() {
-  //     webcam.update(); // update the webcam frame
-  //     await predict();
-  //     window.requestAnimationFrame(loop);
-  // }
 
   useEffect(() => {
     init();
@@ -109,6 +94,8 @@ const PredictPlantDisease = () => {
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
+    setSelImg(file.name);
+    uploadFile(file);
     const img = new Image();
 
     // Validate if a file is selected
