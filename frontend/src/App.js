@@ -44,9 +44,9 @@ function App() {
             >
               <Route element={<AdminProfile />} path="profile" />
             </Route>
-            <Route element={<About />} path="about"/>
-              <Route element={<Contact />} path="contact" />
             <Route element={<Main />} path="main">
+              <Route element={<About />} path="about" />
+              <Route element={<Contact />} path="contact" />
               <Route element={<Home />} path="home" />
               <Route element={<Signin />} path="signin" />
               <Route element={<Signup />} path="signup" />
