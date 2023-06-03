@@ -23,7 +23,11 @@ const PredictPlantDisease = () => {
   let webcam, labelContainer;
 
   const predictionResultExtractor = (prediction) => {
-    return prediction.find((pred) => pred.probability === Math.max(...prediction.map((pred) => pred.probability)));
+    let tempRes = prediction.find((pred) => pred.probability === Math.max(...prediction.map((pred) => pred.probability)));
+    if(tempRes.probability < 0.5){
+      return {className : 'Sorry! Unknown Plant', probability : 0}
+    }
+    return tempRes;
     let result = [];
     for (let i = 0; i < maxPredictions; i++) {
       const classPrediction = prediction[i].className + ': ' + prediction[i].probability.toFixed(2);
