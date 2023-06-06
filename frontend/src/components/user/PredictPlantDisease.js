@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import app_config from '../../config';
 import Swal from 'sweetalert2';
+import { NavLink } from 'react-router-dom';
 
 const PredictPlantDisease = () => {
-  const { apiUrl, modelPath } = app_config;
+  const { apiUrl, modelPath, cureData } = app_config;
 
   const [model, setModel] = useState(null);
   const [maxPredictions, setMaxPredictions] = useState(null);
@@ -25,7 +26,7 @@ const PredictPlantDisease = () => {
   const predictionResultExtractor = (prediction) => {
     let tempRes = prediction.find((pred) => pred.probability === Math.max(...prediction.map((pred) => pred.probability)));
     if (tempRes.probability < 0.5) {
-      return { className: 'Sorry! Unknown Plant', probability: 0 }
+      return { className: 'Sorry! Unknown Plant', probability: 0 };
     }
     return tempRes;
     let result = [];
@@ -82,8 +83,12 @@ const PredictPlantDisease = () => {
   const predictFromImage = async () => {
     const prediction = await model.predict(loadedImage);
     console.log(prediction);
-    console.log(predictionResultExtractor(prediction));
-    setResult(predictionResultExtractor(prediction));
+    let res = predictionResultExtractor(prediction);
+    console.log(res);
+    if (res.probability === 1) {
+      res = { className: 'Sorry! Unknown Plant', probability: 0 };
+    }
+    setResult(res);
     saveHistory(predictionResultExtractor(prediction));
     Swal.fire({
       title: 'Success',
@@ -121,6 +126,28 @@ const PredictPlantDisease = () => {
     }
   };
 
+  const getDiseaseData = () => {
+    sessionStorage.setItem('diseaseData', JSON.stringify(cureData.find((d) => d.diseaseName === result.className)));
+  }
+
+  const getPlantStatus = () => {
+    if (result.className.endsWith('healthy')) {
+      return <p className="display-4 fw-bold text-success text-center">Congratulations!! Your plant is Healthy</p>;
+    } else if (result.className === 'Sorry! Unknown Plant') {
+      return <p className="display-4 fw-bold text-warning text-center">Sorry! Unknown Plant</p>;
+    } else {
+      getDiseaseData();
+      return (
+        <>
+          <p className="h1 fw-bold text-danger text-center">OOps!! Your plant has been detected with disease : {result.className}</p>
+          <NavLink className="btn btn-success mt-3 w-100" to="/user/cure">
+            Find Cure for Your Disease <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          </NavLink>
+        </>
+      );
+    }
+  };
+
   return (
     <div style={{ minHeight: '100vh', backgroundImage: "url('https://wallpapercave.com/wp/wp2139158.jpg')" }}>
       <header className="bg-plant">
@@ -154,14 +181,14 @@ const PredictPlantDisease = () => {
               <center>
                 <div
                   className="card"
-                //             style={{
-                //   backgroundColor: "white",
-                //   height: 600,
-                //   width: 550,
-                //   borderRadius: "1.0cm",
+                  //             style={{
+                  //   backgroundColor: "white",
+                  //   height: 600,
+                  //   width: 550,
+                  //   borderRadius: "1.0cm",
 
-                // }}
-                //   style={{height: '70vh', backgroundSize: 'cover', backgroundImage: `url('https://images.unsplash.com/photo-1538438253612-287c9fc9217e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGxhbnQlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&w=1000&q=80')`}}
+                  // }}
+                  //   style={{height: '70vh', backgroundSize: 'cover', backgroundImage: `url('https://images.unsplash.com/photo-1538438253612-287c9fc9217e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGxhbnQlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&w=1000&q=80')`}}
                 >
                   <div className="card-body">
                     {/* <img src="" /> */}
@@ -186,25 +213,10 @@ const PredictPlantDisease = () => {
                     <i>
                       <br />
                       <h3 style={{ color: 'green' }}>Upload your plant leaf image by clicking the upload icon above!!..</h3>
-                    </i>  
-                    {selImage ? (
-                      <img style={{ height: '400px' }} className="d-block m-auto mt-4" src={selImage} alt="" />
-                    ) : (
-                      ''
-                    )}
+                    </i>
+                    {selImage ? <img style={{ height: '400px' }} className="d-block m-auto mt-4" src={selImage} alt="" /> : ''}
 
-                    {result &&
-                      (result.className.endsWith('healthy') ? (
-                        <p className="display-4 fw-bold text-success text-center">Congratulations!! Your plant is Healthy</p>
-                      ) : (
-                        <>
-                          <p className="h1 fw-bold text-danger text-center">OOps!! Your plant has been detected with disease : {result.className}</p>
-                          <button className="btn btn-success mt-3 w-100">
-                            {' '}
-                            Find Cure for Your Disease <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                          </button>
-                        </>
-                      ))}
+                    {result && getPlantStatus()}
 
                     {loadedImage && (
                       <button className="btn btn-primary mt-5" onClick={predictFromImage}>

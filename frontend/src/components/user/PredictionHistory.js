@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import app_config from '../../config'
+import { toast } from 'react-hot-toast';
 
 const PredictionHistory = () => {
 
@@ -19,18 +20,34 @@ const PredictionHistory = () => {
         setPredictionList(data);
     };
 
+    const deletePrediction = async (id) => {
+        const response = await fetch(`${apiUrl}/prediction/delete/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+        console.log(response.status);
+        if(response.status === 200){
+            toast.success('Prediction Deleted Successfully');
+            getUserHistory();
+        }
+    }
+
     useEffect(() => {
         getUserHistory();
     }, [])
 
     const displayHistory = () => {
-        return <table className='table mt-5'>
+        return <div class="table-container">
+        <table className='table'>
             <thead>
                 <tr>
                     <th>Image</th>
                     <th>Result</th>
                     <th>Confidence</th>
                     <th>Date</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -50,11 +67,15 @@ const PredictionHistory = () => {
                             <td className='h5'>
                                 {new Date(prediction.createdAt).toLocaleDateString()}
                             </td>
+                            <td>
+                                <button className="btn btn-danger" onClick={e => deletePrediction(prediction._id)}>Delete</button>
+                            </td>
                         </tr>
                     ))
                 }
                 </tbody>
         </table>
+        </div>
     }
 
   return (

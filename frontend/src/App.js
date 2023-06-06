@@ -18,6 +18,8 @@ import AdminProvider from './context/AdminProvider';
 import { useState } from 'react';
 import PredictPlantDisease from './components/user/PredictPlantDisease';
 import PredictionHistory from './components/user/PredictionHistory';
+import { Toaster } from 'react-hot-toast';
+import CurePage from './components/user/CurePage';
 
 function App() {
   const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem('user')));
@@ -26,6 +28,7 @@ function App() {
 
   return (
     <BrowserRouter>
+    <Toaster position='top-center' />
       <AdminProvider currentUser={currentAdmin}>
         <UserProvider currentUser={currentUser}>
           <Routes>
@@ -61,6 +64,7 @@ function App() {
               <Route path="profile" element={<UserProfile />} />
               <Route path="predict" element={<PredictPlantDisease />} />
               <Route path="history" element={<PredictionHistory />} />
+              <Route path="cure" element={<CurePage />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
