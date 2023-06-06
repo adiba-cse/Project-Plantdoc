@@ -132,16 +132,20 @@ const PredictPlantDisease = () => {
 
   const getPlantStatus = () => {
     if (result.className.endsWith('healthy')) {
-      return <p className="display-4 fw-bold text-success text-center">Congratulations!! Your plant is Healthy</p>;
+      return <p className="display-4 fw-bold text-success text-center">
+        <h1 style={{ color: "green" }}>Hurray😀!!</h1>
+  <h1 style={{ color: "green" }}>No plant disease detected!!..</h1>
+  <h1 style={{ color: "black" }}>You have a healthy plant!!..</h1>
+      </p>;
     } else if (result.className === 'Sorry! Unknown Plant') {
       return <p className="display-4 fw-bold text-warning text-center">Sorry! Unknown Plant</p>;
     } else {
       getDiseaseData();
       return (
         <>
-          <p className="h1 fw-bold text-danger text-center">OOps!! Your plant has been detected with disease : {result.className}</p>
+          <p className="h1 fw-bold text-danger text-center"> Oops!! Plant detected with a disease : {result.className}</p>
           <NavLink className="btn btn-success mt-3 w-100" to="/user/cure">
-            Find Cure for Your Disease <i class="fa fa-arrow-right" aria-hidden="true"></i>
+          Click here to get the cure now!!.. 
           </NavLink>
         </>
       );
