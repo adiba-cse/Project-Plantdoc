@@ -26,7 +26,10 @@ const About = () => {
    borderWidth:'2px'
       }}
     >
-      <h3></h3>
+      <h3><i>
+      PlantDoc provides the user to identify the diseases that the plants have and provides a proper guidance to as to how to tackle the same with caring tips handy to the general user to gain knowledge and insights for the control and treatment of the same. PlantDoc utilizes Computer Vision and Convolutional Neural Network algorithm of Deep Learning on Artificial Intelligence Model. The model is trained by datasets of various plant leaf disease images. PlantDoc is built on MERN Stack framework. We can click the images of plant leaves from the camera and upload them and check for type of plant disease they correspond to plant is suffering from and how to manage and treat the same and other related caring tips. 
+      </i>
+      </h3>
     </div>
   </center>
 </div>

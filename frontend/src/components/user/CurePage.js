@@ -11,7 +11,9 @@ const CurePage = () => {
       style={{
         minHeight: "100vh",
         backgroundImage:
-          'url("https://cdn.kibrispdr.org/data/12/background-plang-14.jpg")',
+          'url("https://i.pinimg.com/originals/48/93/fc/4893fc6540d38c540280130efa16ecb3.jpg")',
+          backgroundPosition:"no-repeat",
+          backgroundSize:"cover"
       }}
     >
       <div className="container py-5">

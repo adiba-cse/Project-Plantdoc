@@ -31,7 +31,18 @@ const Contact = () => {
    borderWidth:'2px'
       }}
     >
-      <h3></h3>
+      <h3>
+        Adiba Khan
+       
+      </h3>
+      <h3>
+       
+        adibakhn2020@gmail.com
+      </h3>
+      <h3>
+       
+       9839832976
+     </h3>
     </div>
   </center>
 </div>
