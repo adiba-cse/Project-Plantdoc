@@ -11,3 +11,4 @@
 - npm run dev
   
 4. Change the MongoDB Url in backend/config file
+![Screenshot (2570)](https://github.com/adiba-cse/Project-Plantdoc/assets/76046806/8225ae06-25ab-4b40-a780-09250beac7b6)
